@@ -22,9 +22,10 @@ Clone this repository:
 git clone git@github.com:sbking/prisma-supabase-example.git
 ```
 
-Install dependencies:
+Create a `.env` file and install dependencies:
 
 ```sh
+cp .env.example .env
 npm install
 ```
 
