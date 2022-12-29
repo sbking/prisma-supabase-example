@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import errors from "./errors";
 
 dotenv.config();
 
@@ -14,6 +15,9 @@ app.disable("x-powered-by");
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+// 404 & error handlers
+app.use(errors);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
