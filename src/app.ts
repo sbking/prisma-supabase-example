@@ -1,12 +1,17 @@
 import express from "express";
+import compression from "compression";
 import dotenv from "dotenv";
 import helmet from "helmet";
+
 import errors from "./errors";
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// https://expressjs.com/en/advanced/best-practice-performance.html#use-gzip-compression
+app.use(compression());
 
 // https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
 app.use(helmet());
