@@ -1,16 +1,13 @@
-import express, { NextFunction, Request, Response } from "express";
-
-const router = express.Router();
+import { RequestHandler, ErrorRequestHandler } from "express";
+import { logger } from "./logger";
 
 // custom 404
-router.use((req, res, next) => {
+export const error404: RequestHandler = (req, res, next) => {
   res.status(404).send("Not found");
-});
+};
 
 // custom error handler
-router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
+export const error500: ErrorRequestHandler = (err, req, res, next) => {
+  logger.error(err.stack);
   res.status(500).send("Something went wrong");
-});
-
-export default router;
+};

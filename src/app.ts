@@ -3,7 +3,7 @@ import compression from "compression";
 import dotenv from "dotenv";
 import helmet from "helmet";
 
-import errors from "./errors";
+import { error404, error500 } from "./errors";
 import { morganMiddleware } from "./logger";
 
 dotenv.config();
@@ -26,7 +26,8 @@ app.get("/", (req, res) => {
 });
 
 // 404 & error handlers
-app.use(errors);
+app.use(error404);
+app.use(error500);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
